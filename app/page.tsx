@@ -428,38 +428,7 @@ export default function SnakeGame() {
               Back
             </button>
           </div>
-          {/* ================= MOBILE CONTROLS ================= */}
-          <div className="mt-6 sm:hidden flex flex-col items-center gap-2">
-            <button
-              onClick={() => handleDirectionChange({ x: 0, y: -1 })}
-              className="bg-gray-700 w-14 h-14 rounded text-xl active:scale-90"
-            >
-              ⬆️
-            </button>
-
-            <div className="flex gap-6">
-              <button
-                onClick={() => handleDirectionChange({ x: -1, y: 0 })}
-                className="bg-gray-700 w-14 h-14 rounded text-xl active:scale-90"
-              >
-                ⬅️
-              </button>
-
-              <button
-                onClick={() => handleDirectionChange({ x: 1, y: 0 })}
-                className="bg-gray-700 w-14 h-14 rounded text-xl active:scale-90"
-              >
-                ➡️
-              </button>
-            </div>
-
-            <button
-              onClick={() => handleDirectionChange({ x: 0, y: 1 })}
-              className="bg-gray-700 w-14 h-14 rounded text-xl active:scale-90"
-            >
-              ⬇️
-            </button>
-          </div>
+          
 
           {gameOver && <p className="text-red-500 text-xl mt-3">Game Over</p>}
         </>
