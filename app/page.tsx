@@ -342,6 +342,22 @@ export default function SnakeGame() {
 
   /* ================= UI ================= */
 
+  const handleDirectionChange = (newDir: Position) => {
+    if (!gameStarted || gameOver || paused) return;
+
+    // Prevent reversing
+    if (
+      (newDir.x === -direction.current.x &&
+        newDir.y === -direction.current.y) ||
+      (direction.current.x === 0 && direction.current.y === 0)
+    ) {
+      nextDirection.current = newDir;
+      return;
+    }
+
+    nextDirection.current = newDir;
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white">
       <audio ref={eatAudioRef} src="/sounds/eat.mp3" />
@@ -410,6 +426,38 @@ export default function SnakeGame() {
               className="bg-gray-600 px-4 py-2 rounded"
             >
               Back
+            </button>
+          </div>
+          {/* ================= MOBILE CONTROLS ================= */}
+          <div className="mt-6 sm:hidden flex flex-col items-center gap-2">
+            <button
+              onClick={() => handleDirectionChange({ x: 0, y: -1 })}
+              className="bg-gray-700 w-14 h-14 rounded text-xl active:scale-90"
+            >
+              ⬆️
+            </button>
+
+            <div className="flex gap-6">
+              <button
+                onClick={() => handleDirectionChange({ x: -1, y: 0 })}
+                className="bg-gray-700 w-14 h-14 rounded text-xl active:scale-90"
+              >
+                ⬅️
+              </button>
+
+              <button
+                onClick={() => handleDirectionChange({ x: 1, y: 0 })}
+                className="bg-gray-700 w-14 h-14 rounded text-xl active:scale-90"
+              >
+                ➡️
+              </button>
+            </div>
+
+            <button
+              onClick={() => handleDirectionChange({ x: 0, y: 1 })}
+              className="bg-gray-700 w-14 h-14 rounded text-xl active:scale-90"
+            >
+              ⬇️
             </button>
           </div>
 
